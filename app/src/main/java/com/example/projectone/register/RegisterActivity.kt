@@ -1,5 +1,6 @@
 package com.example.projectone.register
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectone.databinding.ActivityRegisterBinding
+import com.example.projectone.login.LoginActivity
 import org.json.JSONObject
 import java.net.URLEncoder
 
@@ -27,15 +29,16 @@ class RegisterActivity : AppCompatActivity() {
             register()
 
         }
+        binding.btnBacktoSignin.setOnClickListener {
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
     }
 
     private fun register() {
-        val firstName =URLEncoder.encode(binding.etFirstname.text.toString(),"UTF-8")
-  //      val lastName =URLEncoder.encode(binding.etLastname.text.toString(),"UTF-8")
-  //      val address =URLEncoder.encode(binding.etAddress.text.toString(),"UTF-8")
-        val mobile =URLEncoder.encode(binding.etMobileNumber.text.toString(),"UTF-8")
-        val email =URLEncoder.encode(binding.etEmail.text.toString(),"UTF-8")
-        val password =URLEncoder.encode(binding.etPassword.text.toString(),"UTF-8")
+        val firstName =binding.etFirstname.text.toString()
+        val mobile =binding.etMobileNumber.text.toString()
+        val email =binding.etEmail.text.toString()
+        val password =binding.etPassword.text.toString()
 
      //   val requestData ="firstName=$firstName&mobile=$mobile&password=$password&email=$email"
         val url ="https://grocery-second-app.herokuapp.com/api/auth/register"
@@ -53,15 +56,23 @@ class RegisterActivity : AppCompatActivity() {
            Request.Method.POST,
             url,
             regiterData,
-            { response: JSONObject ->
+            {
           //
-                val status = response.getInt("status")
-                val message = response.getString("message")
-                Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
+              //  val status = response.getInt("status")
+                val error=it.getBoolean("error")
+                val message = it.getString("message")
+                if(error){
+                    Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
+                }
+
+
             },
             { error: VolleyError ->
                 Log.e("error",error.toString())
-                Toast.makeText(baseContext, "Error is ${error.toString()}", Toast.LENGTH_LONG)
+                Toast.makeText(baseContext, "Error is ${error}", Toast.LENGTH_LONG)
                     .show()
             }
         )
