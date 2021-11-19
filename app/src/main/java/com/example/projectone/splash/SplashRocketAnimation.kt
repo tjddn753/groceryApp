@@ -1,4 +1,4 @@
-package com.example.projectone
+package com.example.projectone.splash
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -6,10 +6,10 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import com.example.projectone.databinding.ActivitySpashRocketAnimationBinding
+import com.example.projectone.register.RegisterActivity
 
 
 class SplashRocketAnimation : AppCompatActivity() {
@@ -35,7 +35,7 @@ class SplashRocketAnimation : AppCompatActivity() {
         animationSet.interpolator = AccelerateInterpolator()
         animationSet.duration = 5000
         animationSet.start()
-        animationSet.doOnEnd { val intent= Intent(this@SplashRocketAnimation,MainActivity::class.java)
+        animationSet.doOnEnd { val intent= Intent(this@SplashRocketAnimation, RegisterActivity::class.java)
             startActivity(intent) }
 
 
