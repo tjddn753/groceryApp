@@ -13,7 +13,7 @@ import com.android.volley.toolbox.Volley
 import com.example.projectone.databinding.ActivityRegisterBinding
 import com.example.projectone.login.LoginActivity
 import org.json.JSONObject
-import java.net.URLEncoder
+
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding

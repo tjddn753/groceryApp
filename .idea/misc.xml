@@ -3,12 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/button_background_shape_with_selector_together.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_login_24.xml" value="0.17407407407407408" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_person_add_24.xml" value="0.1685185185185185" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_settings_24.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/drawable-v24/textview_background.xml" value="0.21897435897435896" />
         <entry key="app/src/main/res/drawable/backto_signin.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/drawable/signup_background.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/activity_category_view_holder.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_spash_rocket_animation.xml" value="0.10030395136778116" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.1" />
       </map>
     </option>
   </component>

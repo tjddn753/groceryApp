@@ -10,11 +10,11 @@ import com.android.volley.RequestQueue
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.projectone.MainActivity
 import com.example.projectone.databinding.ActivityLoginBinding
 import com.example.projectone.register.RegisterActivity
 import org.json.JSONObject
-import java.net.URLEncoder
-import java.util.*
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -60,17 +60,23 @@ class LoginActivity : AppCompatActivity() {
             {
                 //
                 //  val status = response.getInt("status")
-                val error=it.getBoolean("error")
-                val message = it.getString("message")
+            //    val error=it.getBoolean("error")
+             //   val message = it.getString("message")
+              //  val token= it.getString("token")
+              /*    if(error) {
+                      Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
 
-                    Toast.makeText(baseContext, "Login Successfully", Toast.LENGTH_LONG).show()
-
+                  }else{*/
+                      Toast.makeText(baseContext, "login success", Toast.LENGTH_LONG).show()
+                       startActivity(Intent(baseContext,MainActivity::class.java))
+               //   }
 
 
             },
-            { error: VolleyError ->
-                Log.e("error",error.toString())
-                Toast.makeText(baseContext, "Error is ${error}", Toast.LENGTH_LONG)
+            {
+
+                Log.e("error",it.toString())
+                Toast.makeText(baseContext, "Error is ${it}", Toast.LENGTH_LONG)
                     .show()
             }
         )
