@@ -3,6 +3,7 @@ package com.example.projectone.homescreen
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -10,6 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectone.Category
 import com.example.projectone.CategoryResponse
+import com.example.projectone.R
 import com.example.projectone.databinding.ActivityHomescreenBinding
 import com.example.projectone.homescreen.adapter.CategoryAdapter
 import com.example.projectone.homescreen.view.Homescreen
@@ -33,6 +35,37 @@ class HomescreenActivity : AppCompatActivity() , Homescreen {
         homescreenPresenter.getdataFromAPI()
 
   //      loadCategoryInfo()
+
+        binding.btnMenu.setOnClickListener {
+            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                binding.drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+
+        binding.navView.setNavigationItemSelectedListener {
+                menuItem->
+            menuItem.isCheckable
+            binding.drawerLayout.closeDrawers()
+            when(menuItem.itemId){
+                R.id.profile->{
+                    Toast.makeText(this,"I am Profile",Toast.LENGTH_SHORT).show()
+
+                }
+                R.id.setting->{
+                    Toast.makeText(this,"I am Setting",Toast.LENGTH_SHORT).show()
+
+                }
+                R.id.logout->{
+                    Toast.makeText(this,"I am Logout",Toast.LENGTH_SHORT).show()
+
+                }
+
+            }
+            //       binding.drawerLayout.closeDrawer(binding.navView)
+            true
+        }
 
 
     }

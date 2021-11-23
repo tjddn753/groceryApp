@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso
 class CategoryViewHolder(val binding:ActivityCategoryViewHolderBinding):RecyclerView.ViewHolder(binding.root){
 
     fun bindData(category: Category){
+        binding.tvCategoryId.text=category.catId.toString()
         binding.tvCategoryName.text=category.catName
         val url="https://rjtmobile.com/grocery/images/"+category.catImage
         Picasso.get()
