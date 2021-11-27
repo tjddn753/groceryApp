@@ -35,12 +35,18 @@
             android:layout_gravity="right"
             android:background="@color/black"
             android:src="@drawable/ic_baseline_shopping_cart_24" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="60dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/rv_category" />
+
+
+
     </FrameLayout>
+    <FrameLayout
+        android:layout_marginTop="60dp"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

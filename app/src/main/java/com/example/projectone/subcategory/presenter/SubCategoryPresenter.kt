@@ -1,15 +1,16 @@
-package com.example.projectone.homescreen.presenter
+package com.example.projectone.subcategory.presenter
 
 import com.android.volley.RequestQueue
 import com.example.projectone.homescreen.view.Homescreen
 import com.example.projectone.homescreen.model.HomescreenModel
 import com.example.projectone.homescreen.view.CategoryFragment
+import com.example.projectone.subcategory.view.SubCategoryView
 
-class HomescreenPresenter(val view: Homescreen, val queue: RequestQueue) {
+class SubCategoryPresenter(val view: SubCategoryView, val queue: RequestQueue) {
 
-    val homescreenModel = HomescreenModel()
+    val SubCategoryModel = com.example.projectone.subcategory.model.SubCategoryModel()
     fun getdataFromAPI() {
-        homescreenModel.getDataFromAPI(
+        SubCategoryModel.getDataFromAPI(
             {
                 view.onSuccess(it)
 

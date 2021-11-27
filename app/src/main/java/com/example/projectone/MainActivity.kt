@@ -6,11 +6,23 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.Volley
 import com.example.projectone.databinding.ActivityMainBinding
+import com.example.projectone.homescreen.Communicator
+import com.example.projectone.homescreen.Util
+import com.example.projectone.homescreen.adapter.CategoryAdapter
+import com.example.projectone.homescreen.presenter.HomescreenPresenter
+import com.example.projectone.homescreen.view.Homescreen
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),Homescreen {
     lateinit var  binding: ActivityMainBinding
+    lateinit var homescreenPresenter: HomescreenPresenter
+    lateinit var queue: RequestQueue
+    lateinit var categoryList:List<Category>
+    lateinit var adapter: CategoryAdapter
     //    lateinit var actionBarToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +32,10 @@ class MainActivity : AppCompatActivity() {
         //   actionBarToggle = ActionBarDrawerToggle(this.binding.drawerLayout,0,binding.toolbar)
 //        binding.drawerLayout.addDrawerListener(actionBarToggle)
         //      actionBarToggle.setHomeAsUpIndicator(R.drawable.ic_baseline_home_24)
+        queue = Volley.newRequestQueue(this)
+        homescreenPresenter = HomescreenPresenter(this, queue)
 
+        homescreenPresenter.getdataFromAPI()
 
         binding.navView.setNavigationItemSelectedListener {
                 menuItem->
@@ -44,6 +59,32 @@ class MainActivity : AppCompatActivity() {
             //       binding.drawerLayout.closeDrawer(binding.navView)
             true
         }
+    }
+
+    override fun onSuccess(response: CategoryResponse) {
+        Toast.makeText(this,response.error.toString(), Toast.LENGTH_LONG).show()
+    }
+
+    override fun onError(error: String) {
+        Toast.makeText(this,"Error is : ${error.toString()}", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onHaveData(response: CategoryResponse) {
+        categoryList=response.data
+        adapter= CategoryAdapter(categoryList)
+        adapter.setOnCategorySelectedListener {
+                category, position ->
+        //    communicator = activity as Communicator
+          //  communicator.toCategory()   //trasition to fragment category
+
+
+            Util.catId= category.catId.toString()
+            Toast.makeText(this,"Selected+${Util.catId}", Toast.LENGTH_LONG).show()
+
+        }
+        binding.rvCategory.layoutManager= LinearLayoutManager(this)
+        binding.rvCategory.adapter=adapter
+
     }
 }
 /*

@@ -7,6 +7,12 @@ import com.example.projectone.Category
 import com.example.projectone.databinding.ActivityCategoryViewHolderBinding
 
 class CategoryAdapter(val category: List<Category>):RecyclerView.Adapter<CategoryViewHolder>() {
+
+    private lateinit var onCategorySelected: (Category, Int) -> Unit
+    fun setOnCategorySelectedListener(listener: (Category, Int) -> Unit) {
+        this.onCategorySelected = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
          val layoutInflater=LayoutInflater.from(parent.context)
         val binding=ActivityCategoryViewHolderBinding.inflate(layoutInflater)
@@ -16,6 +22,11 @@ class CategoryAdapter(val category: List<Category>):RecyclerView.Adapter<Categor
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
 
           holder.bindData(category[position])
+        holder.itemView.setOnClickListener {
+            if (this::onCategorySelected.isInitialized) {
+                onCategorySelected(category[position], position)
+            }
+        }
     }
 
     override fun getItemCount()=category.size
