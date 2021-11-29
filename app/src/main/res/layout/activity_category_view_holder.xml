@@ -7,27 +7,30 @@
     tools:context=".homescreen.adapter.CategoryViewHolder">
 
     <ImageView
-        android:layout_margin="8dp"
         android:id="@+id/iv_category"
-        android:src="@drawable/rocket"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:layout_margin="8dp"
+        android:src="@drawable/rocket"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+
     <TextView
-        android:layout_marginStart="24dp"
         android:id="@+id/tv_category_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/iv_category"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tv_category_name"/>
-    <TextView
         android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_category_name"
+        app:layout_constraintStart_toEndOf="@id/iv_category"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/tv_category_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/iv_category"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-    />
+        app:layout_constraintStart_toEndOf="@id/iv_category"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

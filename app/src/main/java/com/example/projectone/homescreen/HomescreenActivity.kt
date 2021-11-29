@@ -8,12 +8,14 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.android.volley.RequestQueue
 import com.example.projectone.R
+import com.example.projectone.Util
+import com.example.projectone.cart.CartFragment
 import com.example.projectone.databinding.ActivityHomescreenBinding
 import com.example.projectone.databinding.FragmentCategoryBinding
 import com.example.projectone.homescreen.presenter.HomescreenPresenter
 import com.example.projectone.homescreen.view.CategoryFragment
+import com.example.projectone.subcategory.DetailsFragment
 import com.example.projectone.subcategory.SubCategoryFragment
-
 
 
 class HomescreenActivity : AppCompatActivity() ,Communicator {
@@ -40,6 +42,12 @@ class HomescreenActivity : AppCompatActivity() ,Communicator {
             } else {
                 binding.drawerLayout.openDrawer(GravityCompat.START)
             }
+        }
+        binding.btnCart.setOnClickListener{
+            toCart()
+        }
+        binding.btnHome.setOnClickListener {
+            toHome()
         }
 
         binding.navView.setNavigationItemSelectedListener { menuItem ->
@@ -79,12 +87,33 @@ class HomescreenActivity : AppCompatActivity() ,Communicator {
         transaction.addToBackStack(Util.Tag)
         transaction.commit()
     }
-
+    override fun toHome() {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.frame_container,CategoryFragment() )
+        transaction.addToBackStack(Util.Tag)
+        transaction.commit()
+    }
 
     override fun toSubCategory() {
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
         transaction.replace(R.id.frame_container,SubCategoryFragment() )
+        transaction.addToBackStack(Util.Tag)
+        transaction.commit()
+    }
+
+    override fun toDetails() {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.frame_container,DetailsFragment() )
+        transaction.addToBackStack(Util.Tag)
+        transaction.commit()
+    }
+    override fun toCart() {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.frame_container,CartFragment() )
         transaction.addToBackStack(Util.Tag)
         transaction.commit()
     }

@@ -4,14 +4,10 @@ package com.example.projectone
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.example.projectone.databinding.ActivityMainBinding
-import com.example.projectone.homescreen.Communicator
-import com.example.projectone.homescreen.Util
 import com.example.projectone.homescreen.adapter.CategoryAdapter
 import com.example.projectone.homescreen.presenter.HomescreenPresenter
 import com.example.projectone.homescreen.view.Homescreen

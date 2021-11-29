@@ -1,6 +1,5 @@
 package com.example.projectone.homescreen.view
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,8 +13,8 @@ import com.example.projectone.Category
 import com.example.projectone.CategoryResponse
 import com.example.projectone.databinding.FragmentCategoryBinding
 import com.example.projectone.homescreen.Communicator
-import com.example.projectone.homescreen.Util
-import com.example.projectone.homescreen.Util.Companion.getHomeContext
+import com.example.projectone.Util
+import com.example.projectone.Util.Companion.getHomeContext
 import com.example.projectone.homescreen.adapter.CategoryAdapter
 import com.example.projectone.homescreen.presenter.HomescreenPresenter
 

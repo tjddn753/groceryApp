@@ -1,5 +1,7 @@
 package com.example.projectone.subcategory
 
+import Details
+import DetailsResponse
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,21 +14,21 @@ import com.android.volley.toolbox.Volley
 import com.example.projectone.databinding.FragmentSubCategoryBinding
 import com.example.projectone.homescreen.Communicator
 import com.example.projectone.Util
-import com.example.projectone.subcategory.adapter.SubCategoryAdapter
-import com.example.projectone.subcategory.presenter.SubCategoryPresenter
-import com.example.projectone.subcategory.view.SubCategory
-import com.example.projectone.subcategory.view.SubCategoryReseponse
-import com.example.projectone.subcategory.view.SubCategoryView
+import com.example.projectone.database.DatabaseHandler
+import com.example.projectone.subcategory.adapter.CartAdapter
+import com.example.projectone.subcategory.adapter.DetailsAdapter
+import com.example.projectone.subcategory.presenter.DetailsPresenter
+import com.example.projectone.subcategory.view.DetailsView
 
 
-class SubCategoryFragment : Fragment(),SubCategoryView {
+class DetailsFragment : Fragment(),DetailsView {
 
 
     lateinit var binding: FragmentSubCategoryBinding
-    lateinit var subCategoryPresenter: SubCategoryPresenter
+    lateinit var detailsPresenter:DetailsPresenter
     lateinit var queue: RequestQueue
-    lateinit var subCategoryList:List<SubCategory>
-    lateinit var adapter: SubCategoryAdapter
+    lateinit var DetailsList:List<Details>
+    lateinit var adapter: DetailsAdapter
     private lateinit var communicator: Communicator
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +37,13 @@ class SubCategoryFragment : Fragment(),SubCategoryView {
         // Inflate the layout for this fragment
         binding = FragmentSubCategoryBinding.inflate(inflater, container, false)
         queue = Volley.newRequestQueue(Util.getHomeContext())
-        subCategoryPresenter = SubCategoryPresenter(this, queue)
-        subCategoryPresenter.getdataFromAPI()
+        detailsPresenter = DetailsPresenter(this, queue)
+        detailsPresenter.getdataFromAPI()
         //     inflater.inflate(R.layout.fragment_category, container, false)
         return  binding.root
     }
 
-    override fun onSuccess(response: SubCategoryReseponse) {
+    override fun onSuccess(response: DetailsResponse) {
         Toast.makeText(Util.getHomeContext(),response.error.toString(), Toast.LENGTH_LONG).show()
     }
 
@@ -49,25 +51,22 @@ class SubCategoryFragment : Fragment(),SubCategoryView {
         Toast.makeText(Util.getHomeContext(),"Error is : ${error.toString()}", Toast.LENGTH_LONG).show()
     }
 
-    override fun onHaveData(response: SubCategoryReseponse) {
-        subCategoryList= response.data
-        adapter= SubCategoryAdapter(subCategoryList)
+    override fun onHaveData(response: DetailsResponse) {
+        DetailsList= response.data
+        var communicator:Communicator= activity as Communicator
+        adapter= DetailsAdapter(DetailsList,communicator)
+
         adapter.setOnSubCategorySelectedListener  {
-                category, position ->
-            communicator = activity as Communicator
+                details, position ->
 
-            communicator.toDetails()   //trasition to fragment category
 
-            Util.subCatId= category.subId.toString()
-      //      Util.catImage="https://rjtmobile.com/grocery/images/"+category.catImage
 
-            Toast.makeText(Util.getHomeContext(),"Selected+${Util.catId}", Toast.LENGTH_LONG).show()
+     //       Toast.makeText(Util.getHomeContext(),"Selected+${Util.catId}", Toast.LENGTH_LONG).show()
 
         }
         binding.rvCategory.layoutManager= LinearLayoutManager(Util.getHomeContext())
         binding.rvCategory.adapter=adapter
 
+
     }
-
-
 }
