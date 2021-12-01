@@ -1,6 +1,7 @@
 package com.example.projectone.homescreen
 
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,6 +15,8 @@ import com.example.projectone.databinding.ActivityHomescreenBinding
 import com.example.projectone.databinding.FragmentCategoryBinding
 import com.example.projectone.homescreen.presenter.HomescreenPresenter
 import com.example.projectone.homescreen.view.CategoryFragment
+import com.example.projectone.orders.OrdersFragment
+import com.example.projectone.shipping.ShippingFragment
 import com.example.projectone.subcategory.DetailsFragment
 import com.example.projectone.subcategory.SubCategoryFragment
 
@@ -44,7 +47,7 @@ class HomescreenActivity : AppCompatActivity() ,Communicator {
             }
         }
         binding.btnCart.setOnClickListener{
-            toCart()
+            toShipping()
         }
         binding.btnHome.setOnClickListener {
             toHome()
@@ -114,6 +117,20 @@ class HomescreenActivity : AppCompatActivity() ,Communicator {
         val manager = supportFragmentManager
         val transaction = manager.beginTransaction()
         transaction.replace(R.id.frame_container,CartFragment() )
+        transaction.addToBackStack(Util.Tag)
+        transaction.commit()
+    }
+    override fun toShipping() {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.frame_container,ShippingFragment() )
+        transaction.addToBackStack(Util.Tag)
+        transaction.commit()
+    }
+    override fun toOrders() {
+        val manager = supportFragmentManager
+        val transaction = manager.beginTransaction()
+        transaction.replace(R.id.frame_container,OrdersFragment() )
         transaction.addToBackStack(Util.Tag)
         transaction.commit()
     }

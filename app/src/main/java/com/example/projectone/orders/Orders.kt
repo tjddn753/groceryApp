@@ -1,13 +1,4 @@
-data class orders(
-    val `data`: Data,
-    val error: Boolean,
-    val message: String
-)
-
-data class Data(
-    val __v: Int,
-    val _id: String,
-    val date: String,
+data class Orders(
     val orderSummary: OrderSummary,
     val payment: Payment,
     val products: List<Product>,
@@ -16,7 +7,6 @@ data class Data(
 )
 
 data class OrderSummary(
-    val _id: String,
     val deliveryCharges: Int,
     val discount: Int,
     val ourPrice: Int,
@@ -24,12 +14,11 @@ data class OrderSummary(
 )
 
 data class Payment(
-    val _id: String,
     val paymentMode: String
 )
 
 data class Product(
-    val _id: String,
+    val id: String,
     val price: Int,
     val productName: String,
     val quantity: Int

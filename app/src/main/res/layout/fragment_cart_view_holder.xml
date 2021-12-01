@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/tv_details_description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
@@ -44,15 +44,48 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_details_name"
         tools:text="asdfasfasdf" />
 
-    <EditText
+
+    <TextView
         android:id="@+id/et_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:inputType="number"
         android:text="1"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toEndOf="@id/iv_details"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_description" />
+
+    <Button
+        android:id="@+id/btn_minus"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="18dp"
+        android:padding="0dp"
+        android:text="-"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/et_quantity"
+        app:layout_constraintStart_toEndOf="@id/iv_details"
+        app:layout_constraintTop_toBottomOf="@+id/tv_details_description" />
+
+    <Button
+        android:id="@+id/btn_plus"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="80dp"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/et_quantity"
         app:layout_constraintTop_toBottomOf="@+id/tv_details_description" />
 
     <TextView
@@ -65,25 +98,15 @@
         app:layout_constraintTop_toBottomOf="@+id/et_quantity"
         tools:text="30" />
 
-    <Button
-        android:id="@+id/btn_update"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="update"
-        android:textSize="10dp"
-        app:layout_constraintStart_toEndOf="@+id/iv_details"
-        app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
     <Button
         android:id="@+id/btn_delete"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:text="delete"
         android:textSize="10dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_update"
+        app:layout_constraintStart_toEndOf="@+id/iv_details"
         app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 </androidx.constraintlayout.widget.ConstraintLayout>

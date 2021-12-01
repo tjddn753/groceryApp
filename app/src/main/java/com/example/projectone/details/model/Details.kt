@@ -18,5 +18,7 @@ data class Details(
     val quantity: Int,
     val status: Boolean,
     val subId: Int,
-    val unit: String
+    val unit: String,
+    var IDMine: Int,
+    var QuantityMine:Int
 )

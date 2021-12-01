@@ -1,5 +1,6 @@
 package com.example.projectone.homescreen
 
+import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 
 interface Communicator {
@@ -10,5 +11,9 @@ interface Communicator {
      fun toDetails()
 
      fun toCart()
+
+     fun toShipping()
+
+     fun toOrders()
 
 }

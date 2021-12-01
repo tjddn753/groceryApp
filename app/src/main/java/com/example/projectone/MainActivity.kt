@@ -13,76 +13,18 @@ import com.example.projectone.homescreen.presenter.HomescreenPresenter
 import com.example.projectone.homescreen.view.Homescreen
 
 
-class MainActivity : AppCompatActivity(),Homescreen {
-    lateinit var  binding: ActivityMainBinding
-    lateinit var homescreenPresenter: HomescreenPresenter
-    lateinit var queue: RequestQueue
-    lateinit var categoryList:List<Category>
-    lateinit var adapter: CategoryAdapter
-    //    lateinit var actionBarToggle: ActionBarDrawerToggle
+class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //   actionBarToggle = ActionBarDrawerToggle(this.binding.drawerLayout,0,binding.toolbar)
-//        binding.drawerLayout.addDrawerListener(actionBarToggle)
-        //      actionBarToggle.setHomeAsUpIndicator(R.drawable.ic_baseline_home_24)
-        queue = Volley.newRequestQueue(this)
-        homescreenPresenter = HomescreenPresenter(this, queue)
-
-        homescreenPresenter.getdataFromAPI()
-
-        binding.navView.setNavigationItemSelectedListener {
-                menuItem->
-            menuItem.isCheckable
-            binding.drawerLayout.closeDrawers()
-            when(menuItem.itemId){
-                R.id.profile->{
-                    Toast.makeText(this,"I am Profile",Toast.LENGTH_SHORT).show()
-
-                }
-                R.id.setting->{
-                    Toast.makeText(this,"I am Setting",Toast.LENGTH_SHORT).show()
-
-                }
-                R.id.logout->{
-                    Toast.makeText(this,"I am Logout",Toast.LENGTH_SHORT).show()
-
-                }
-
-            }
-            //       binding.drawerLayout.closeDrawer(binding.navView)
-            true
-        }
-    }
-
-    override fun onSuccess(response: CategoryResponse) {
-        Toast.makeText(this,response.error.toString(), Toast.LENGTH_LONG).show()
-    }
-
-    override fun onError(error: String) {
-        Toast.makeText(this,"Error is : ${error.toString()}", Toast.LENGTH_LONG).show()
-    }
-
-    override fun onHaveData(response: CategoryResponse) {
-        categoryList=response.data
-        adapter= CategoryAdapter(categoryList)
-        adapter.setOnCategorySelectedListener {
-                category, position ->
-        //    communicator = activity as Communicator
-          //  communicator.toCategory()   //trasition to fragment category
-
-
-            Util.catId= category.catId.toString()
-            Toast.makeText(this,"Selected+${Util.catId}", Toast.LENGTH_LONG).show()
-
-        }
-        binding.rvCategory.layoutManager= LinearLayoutManager(this)
-        binding.rvCategory.adapter=adapter
-
+        // For testing purpose
+        //HomescreemActivity as MainActivity
     }
 }
+
 /*
 
 import android.annotation.SuppressLint

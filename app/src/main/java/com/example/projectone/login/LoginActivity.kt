@@ -11,7 +11,9 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.projectone.MainActivity
+import com.example.projectone.Util
 import com.example.projectone.databinding.ActivityLoginBinding
+import com.example.projectone.homescreen.HomescreenActivity
 import com.example.projectone.register.RegisterActivity
 import org.json.JSONObject
 
@@ -30,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnSignin.setOnClickListener {
             Signin()
-
+         //   startActivity(Intent(this,HomescreenActivity::class.java))
         }
         binding.btnBacktoSignup.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
@@ -67,8 +69,14 @@ class LoginActivity : AppCompatActivity() {
                       Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
 
                   }else{*/
+             //   var userId=it.getString("user")
+             //     Util.userId=userId
+                val data=it.getJSONObject("user").getString("_id")
+                Util.userId=data
+                Log.i("Data",data)
+
                       Toast.makeText(baseContext, "login success", Toast.LENGTH_LONG).show()
-                       startActivity(Intent(baseContext,MainActivity::class.java))
+                       startActivity(Intent(baseContext,HomescreenActivity::class.java))
                //   }
 
 

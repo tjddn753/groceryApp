@@ -11,17 +11,23 @@
         <entry key="app/src/main/res/drawable-v24/ic_baseline_settings_24.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/drawable-v24/textview_background.xml" value="0.21897435897435896" />
         <entry key="app/src/main/res/drawable/backto_signin.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.17407407407407408" />
         <entry key="app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/drawable/signup_background.xml" value="0.22239583333333332" />
         <entry key="app/src/main/res/layout/activity_category_view_holder.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_details_view_holder.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_homescreen.xml" value="0.14945652173913043" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_spash_rocket_animation.xml" value="0.10030395136778116" />
+        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_cart_view_holder.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.1644021739130435" />
+        <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_shipping.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_sub_category.xml" value="0.25" />
         <entry key="app/src/main/res/layout/nav_header.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.1" />

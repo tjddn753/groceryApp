@@ -61,6 +61,7 @@ class RegisterActivity : AppCompatActivity() {
               //  val status = response.getInt("status")
                 val error=it.getBoolean("error")
                 val message = it.getString("message")
+
                 if(error){
                     Toast.makeText(baseContext, message, Toast.LENGTH_LONG).show()
                 }

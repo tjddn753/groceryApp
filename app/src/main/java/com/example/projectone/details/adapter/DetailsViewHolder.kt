@@ -2,6 +2,7 @@ package com.example.projectone.subcategory.adapter
 
 import Details
 import android.annotation.SuppressLint
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectone.R
@@ -27,19 +28,50 @@ class DetailsViewHolder(val binding:ActivityDetailsViewHolderBinding,val communi
             .load(url)
             .placeholder(R.drawable.rocket)
             .into(binding.ivDetails)
+        var databaseHandler = DatabaseHandler(Util.getHomeContext())
 
         binding.btnAdd.setOnClickListener {
             val databaseHandler = DatabaseHandler(Util.getHomeContext())
             //        val emp: List<Details> = databaseHandler.getItems()
+            details.IDMine=++Util.index
+
+            val value=binding.etQuantity.text
+            details.QuantityMine=Integer.parseInt(value.toString())
             val insertId=databaseHandler.addItem(details)
             if(insertId > 0) {
-                Toast.makeText(Util.getHomeContext(), "Employee added with id : $insertId", Toast.LENGTH_LONG).show()
+                Toast.makeText(Util.getHomeContext(), "Item added with id : $insertId", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(Util.getHomeContext(), "Failed to add employee. Please retry.", Toast.LENGTH_LONG).show()
+                Toast.makeText(Util.getHomeContext(), "Failed to add Item. Please retry.", Toast.LENGTH_LONG).show()
             }
             communicator.toDetails()
 
     //        Toast.makeText(Util.getHomeContext(),"${details.price}",Toast.LENGTH_LONG).show()
+        }
+        binding.btnPlus.setOnClickListener {
+            var input = binding.etQuantity.text.toString()
+            var value=Integer.parseInt(input)
+
+            value+=1
+            binding.etQuantity.setText(value.toString())
+            details.QuantityMine=Integer.parseInt(value.toString())
+            Log.i("Data", details.QuantityMine.toString())
+      //      databaseHandler.updateEItem(details)
+        //    communicator.toDetails()
+        }
+        binding.btnMinus.setOnClickListener {
+            var input = binding.etQuantity.text.toString()
+            var value=Integer.parseInt(input)
+
+            if(value>=1)
+                value-=1
+            else
+                value=0
+            binding.etQuantity.setText(value.toString())
+
+            details.QuantityMine=Integer.parseInt(value.toString())
+            Log.i("Data", details.QuantityMine.toString())
+         //   databaseHandler.updateEItem(details)
+         //   communicator.toDetails()
         }
 
     }

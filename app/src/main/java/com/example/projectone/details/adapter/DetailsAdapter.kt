@@ -21,7 +21,7 @@ class DetailsAdapter(val details:List<Details>,val communicator: Communicator):R
 
     override fun onBindViewHolder(holder: DetailsViewHolder, position: Int) {
        holder.bindData(details[position])
-
+        holder.binding.etQuantity.text=details[position].QuantityMine.toString()
         holder.itemView.setOnClickListener {
             if(this::onSubCategorySelected.isInitialized)
             {
